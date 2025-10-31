@@ -51,8 +51,8 @@ export const navItems: NavItem[] = [
     ]
   },
   {
-    title: 'Kanban',
-    url: '/dashboard/kanban',
+    title: 'Microservices',
+    url: '/dashboard/microservices',
     icon: 'kanban',
     shortcut: ['k', 'k'],
     isActive: false,

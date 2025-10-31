@@ -18,23 +18,28 @@ export function Breadcrumbs() {
   return (
     <Breadcrumb>
       <BreadcrumbList>
-        {items.map((item, index) => (
-          <Fragment key={item.title}>
-            {index !== items.length - 1 && (
-              <BreadcrumbItem className='hidden md:block'>
-                <BreadcrumbLink href={item.link}>{item.title}</BreadcrumbLink>
-              </BreadcrumbItem>
-            )}
-            {index < items.length - 1 && (
-              <BreadcrumbSeparator className='hidden md:block'>
-                <IconSlash />
-              </BreadcrumbSeparator>
-            )}
-            {index === items.length - 1 && (
-              <BreadcrumbPage>{item.title}</BreadcrumbPage>
-            )}
-          </Fragment>
-        ))}
+        {items.map((item, index) => {
+          const isDashboard = item.title.toLowerCase() === 'dashboard';
+          const link = isDashboard ? '/dashboard/overview' : item.link;
+
+          return (
+            <Fragment key={item.title}>
+              {index !== items.length - 1 && (
+                <BreadcrumbItem className="hidden md:block">
+                  <BreadcrumbLink href={link}>{item.title}</BreadcrumbLink>
+                </BreadcrumbItem>
+              )}
+              {index < items.length - 1 && (
+                <BreadcrumbSeparator className="hidden md:block">
+                  <IconSlash />
+                </BreadcrumbSeparator>
+              )}
+              {index === items.length - 1 && (
+                <BreadcrumbPage>{item.title}</BreadcrumbPage>
+              )}
+            </Fragment>
+          );
+        })}
       </BreadcrumbList>
     </Breadcrumb>
   );
