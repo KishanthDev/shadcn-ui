@@ -39,8 +39,6 @@ export default function UserAuthForm() {
     startTransition(() => {
       console.log('continue with email clicked');
       toast.success('Signed In Successfully!');
-      localStorage.setItem('userToken', 'demo_token');
-      router.push('/dashboard/overview');
     });
   };
 

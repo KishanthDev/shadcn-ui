@@ -54,10 +54,6 @@ export function UserNav() {
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuItem
-            onClick={() => {
-              localStorage.clear();
-              router.push('/auth/sign-in');
-            }}
           >
             Sign out
           </DropdownMenuItem>

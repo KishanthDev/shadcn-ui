@@ -201,10 +201,6 @@ export default function AppSidebar() {
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
-                  onClick={() => {
-                    localStorage.clear();
-                    router.push('/auth/sign-in');
-                  }}
                 >
                   <IconLogout className="mr-2 h-4 w-4" />
                   Sign out
