@@ -9,7 +9,7 @@ import {
   FormMessage
 } from '@/components/ui/form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { redirect, useSearchParams } from 'next/navigation';
+import { redirect, useRouter, useSearchParams } from 'next/navigation';
 import { useTransition } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
@@ -24,8 +24,8 @@ const formSchema = z.object({
 type UserFormValue = z.infer<typeof formSchema>;
 
 export default function UserAuthForm() {
-  const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get('callbackUrl');
+    const router = useRouter();
+
   const [loading, startTransition] = useTransition();
   const defaultValues = {
     email: 'demo@gmail.com'
@@ -40,7 +40,7 @@ export default function UserAuthForm() {
       console.log('continue with email clicked');
       toast.success('Signed In Successfully!');
       localStorage.setItem('userToken', 'demo_token');
-      redirect(callbackUrl || '/dashboard/overview');
+      router.push('/dashboard/overview');
     });
   };
 
