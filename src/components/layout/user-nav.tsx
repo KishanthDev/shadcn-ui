@@ -17,7 +17,7 @@ export function UserNav() {
     id: 'user_123',
     fullName: 'John Doe',
     emailAddress: 'johndoe@gmail.com',
-    }
+  }
   const router = useRouter();
   if (user) {
     return (
@@ -53,7 +53,12 @@ export function UserNav() {
             <DropdownMenuItem>New Team</DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() => {
+              localStorage.clear();
+              router.push('/auth/sign-in');
+            }}
+          >
             Sign out
           </DropdownMenuItem>
         </DropdownMenuContent>
