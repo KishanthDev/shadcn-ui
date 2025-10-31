@@ -24,7 +24,6 @@ export default function Header() {
         </div>
         <UserNav />
         <ModeToggle />
-        <ThemeSelector />
       </div>
     </header>
   );
