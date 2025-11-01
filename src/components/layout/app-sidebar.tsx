@@ -78,7 +78,7 @@ export default function AppSidebar() {
 
   return (
     <Sidebar collapsible='icon'>
-      <SidebarHeader  className="h-14 flex-shrink-0">
+      <SidebarHeader  className="h-14 justify-center items-center flex-shrink-0">
         <OrgSwitcher
         />
       </SidebarHeader>
