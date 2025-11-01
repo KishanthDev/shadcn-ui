@@ -2,6 +2,6 @@ import React from 'react'
 
 export default async function Page() {
     return (
-        <div>page</div>
+        <div>GEN AI</div>
     )
 }

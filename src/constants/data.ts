@@ -31,13 +31,13 @@ export const navItems: NavItem[] = [
   },
   {
     title: 'Deploy',
-    url: '#', // Placeholder as there is no direct link for the parent
+    url: '/dashboard/deploy', // Placeholder as there is no direct link for the parent
     icon: 'billing',
     isActive: true,
   },
   {
     title: 'Gen AI',
-    url: '/dashboard/microservices',
+    url: '/dashboard/gen-ai',
     icon: 'kanban',
     shortcut: ['k', 'k'],
     isActive: false,
