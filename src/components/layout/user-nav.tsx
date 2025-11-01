@@ -9,24 +9,30 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
-import { UserAvatarProfile } from '@/components/user-avatar-profile';
+import { IconUser } from '@tabler/icons-react';
 import { useRouter } from 'next/navigation';
-import { email } from 'zod';
+
 export function UserNav() {
   const user = {
     id: 'user_123',
     fullName: 'John Doe',
     emailAddress: 'johndoe@gmail.com',
-  }
+  };
+
   const router = useRouter();
+
   if (user) {
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant='ghost' className='relative h-8 w-8 rounded-full'>
-            <UserAvatarProfile user={user} />
+          <Button
+            variant='ghost'
+            className='relative h-8 w-8 rounded-full flex items-center justify-center'
+          >
+            <IconUser className='h-5 w-5 text-muted-foreground' />
           </Button>
         </DropdownMenuTrigger>
+
         <DropdownMenuContent
           className='w-56'
           align='end'
@@ -43,7 +49,9 @@ export function UserNav() {
               </p>
             </div>
           </DropdownMenuLabel>
+
           <DropdownMenuSeparator />
+
           <DropdownMenuGroup>
             <DropdownMenuItem onClick={() => router.push('/dashboard/profile')}>
               Profile
@@ -52,13 +60,14 @@ export function UserNav() {
             <DropdownMenuItem>Settings</DropdownMenuItem>
             <DropdownMenuItem>New Team</DropdownMenuItem>
           </DropdownMenuGroup>
+
           <DropdownMenuSeparator />
-          <DropdownMenuItem
-          >
-            Sign out
-          </DropdownMenuItem>
+
+          <DropdownMenuItem>Sign out</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     );
   }
+
+  return null;
 }
