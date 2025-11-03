@@ -27,7 +27,7 @@ export function OrgSwitcher() {
           <div
             className="flex aspect-square size-8 items-center justify-center rounded-lg shrink-0"
             style={{
-              backgroundColor: 'rgb(200 213 255)',
+              backgroundColor: '#2490ff',
             }}
           >
             <Image
@@ -35,7 +35,7 @@ export function OrgSwitcher() {
               alt="Company Logo"
               width={24}
               height={24}
-              className="object-contain"
+              className="object-contain invert brightness-0"
               priority
             />
           </div>
