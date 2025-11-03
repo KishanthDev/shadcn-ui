@@ -36,6 +36,8 @@ export default async function RootLayout({
   return (
     <html lang='en' suppressHydrationWarning>
       <head>
+        <title>Next Shadcn</title>
+        <meta name="description" content="Basic dashboard with Next.js and Shadcn" />
         <script
           dangerouslySetInnerHTML={{
             __html: `

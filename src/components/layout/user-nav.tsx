@@ -28,6 +28,7 @@ export function UserNav() {
           <Button
             variant='ghost'
             className='relative h-8 w-8 rounded-full flex items-center justify-center'
+            aria-label='User profile'
           >
             <IconUser className='h-5 w-5 text-muted-foreground' />
           </Button>
