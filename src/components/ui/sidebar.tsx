@@ -217,7 +217,7 @@ function Sidebar({
       <div
         data-slot='sidebar-gap'
         className={cn(
-          'relative w-(--sidebar-width) bg-transparent transition-[width] duration-200 ease-linear',
+          'relative w-(--sidebar-width) bg-transparent transition-[width] duration-300 ease-linear',
           'group-data-[collapsible=offcanvas]:w-0',
           'group-data-[side=right]:rotate-180',
           variant === 'floating' || variant === 'inset'
@@ -228,7 +228,7 @@ function Sidebar({
       <div
         data-slot='sidebar-container'
         className={cn(
-          'fixed inset-y-0 z-10 hidden h-svh w-(--sidebar-width) transition-[left,right,width] duration-200 ease-linear md:flex',
+          'fixed inset-y-0 z-10 hidden h-svh w-(--sidebar-width) transition-[left,right,width] duration-300 ease-linear md:flex',
           side === 'left'
             ? 'left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]'
             : 'right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]',
@@ -271,9 +271,9 @@ function SidebarTrigger({
       {...props}
     >
       {open ? (
-        <ChevronsLeft className="size-4 transition-transform duration-200" />
+        <ChevronsLeft className="size-4 transition-transform duration-300" />
       ) : (
-        <ChevronsRight className="size-4 transition-transform duration-200" />
+        <ChevronsRight className="size-4 transition-transform duration-300" />
       )}
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
