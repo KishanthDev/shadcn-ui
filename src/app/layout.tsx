@@ -1,5 +1,3 @@
-export const dynamic = 'force-dynamic';
-
 import Providers from '@/components/layout/providers';
 import { Toaster } from '@/components/ui/sonner';
 import { fontVariables } from '@/lib/font';
