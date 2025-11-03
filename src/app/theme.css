@@ -26,59 +26,84 @@ body {
   }
 }
 
+/* ---------- Default Theme ---------- */
 .theme-default,
 .theme-default-scaled {
   --primary: var(--color-neutral-600);
   --primary-foreground: var(--color-neutral-50);
+  --sidebar-accent: var(--primary);
+  --sidebar-accent-foreground: var(--primary-foreground);
 
   @variant dark {
     --primary: var(--color-neutral-500);
     --primary-foreground: var(--color-neutral-50);
+    --sidebar-accent: var(--primary);
+    --sidebar-accent-foreground: var(--primary-foreground);
   }
 }
 
+/* ---------- Blue Theme ---------- */
 .theme-blue,
 .theme-blue-scaled {
   --primary: var(--color-blue-600);
   --primary-foreground: var(--color-blue-50);
+  --sidebar-accent: oklch(0.63 0.2 250); /* medium blue hover */
+  --sidebar-accent-foreground: white;
 
   @variant dark {
     --primary: var(--color-blue-500);
     --primary-foreground: var(--color-blue-50);
+    --sidebar-accent: oklch(0.72 0.22 250); /* lighter blue for dark bg */
+    --sidebar-accent-foreground: black;
   }
 }
 
+/* ---------- Green Theme ---------- */
 .theme-green,
 .theme-green-scaled {
   --primary: var(--color-lime-600);
   --primary-foreground: var(--color-lime-50);
+  --sidebar-accent: oklch(0.63 0.2 145);
+  --sidebar-accent-foreground: white;
 
   @variant dark {
     --primary: var(--color-lime-600);
     --primary-foreground: var(--color-lime-50);
+    --sidebar-accent: oklch(0.72 0.22 145);
+    --sidebar-accent-foreground: black;
   }
 }
 
+/* ---------- Amber Theme ---------- */
 .theme-amber,
 .theme-amber-scaled {
   --primary: var(--color-amber-600);
   --primary-foreground: var(--color-amber-50);
+  --sidebar-accent: oklch(0.63 0.2 80);
+  --sidebar-accent-foreground: white;
 
   @variant dark {
     --primary: var(--color-amber-500);
     --primary-foreground: var(--color-amber-50);
+    --sidebar-accent: oklch(0.75 0.22 80);
+    --sidebar-accent-foreground: black;
   }
 }
 
+/* ---------- Mono Theme ---------- */
 .theme-mono,
 .theme-mono-scaled {
   --font-sans: var(--font-mono);
   --primary: var(--color-neutral-600);
   --primary-foreground: var(--color-neutral-50);
+  --sidebar-accent: oklch(0.55 0.04 250); /* subtle neutral hover */
+  --sidebar-accent-foreground: white;
 
   @variant dark {
     --primary: var(--color-neutral-500);
     --primary-foreground: var(--color-neutral-50);
+    --sidebar-accent: oklch(0.75 0.04 250);
+    --sidebar-accent-foreground: black;
   }
 
   .rounded-xs,
