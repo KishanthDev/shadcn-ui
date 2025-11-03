@@ -1,6 +1,6 @@
 'use client';
 
-import { GalleryVerticalEnd } from 'lucide-react';
+import Image from 'next/image';
 import * as React from 'react';
 import {
   SidebarMenu,
@@ -24,8 +24,20 @@ export function OrgSwitcher() {
           size="lg"
         >
           {/* Logo */}
-          <div className="bg-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg shrink-0">
-            <GalleryVerticalEnd className="size-4" />
+          <div
+            className="flex aspect-square size-8 items-center justify-center rounded-lg shrink-0"
+            style={{
+              backgroundColor: 'rgb(200 213 255)',
+            }}
+          >
+            <Image
+              src="/assets/logo.svg"
+              alt="Company Logo"
+              width={24}
+              height={24}
+              className="object-contain"
+              priority
+            />
           </div>
 
           {/* Text container with transition */}
