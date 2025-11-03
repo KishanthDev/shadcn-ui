@@ -1,5 +1,7 @@
-import { redirect } from 'next/navigation';
-
-export default async function Page() {
-    redirect('/dashboard/overview');
+export default function Page() {
+  return (
+    <main className="flex h-screen items-center justify-center text-center">
+      <p>Redirecting to dashboard...</p>
+    </main>
+  );
 }
