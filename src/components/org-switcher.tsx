@@ -27,7 +27,8 @@ export function OrgSwitcher() {
           <div
             className="flex aspect-square size-8 items-center justify-center rounded-lg shrink-0"
             style={{
-              backgroundColor: '#2490ff',
+              backgroundColor: 'var(--primary)',
+              color: 'var(--primary-foreground)',
             }}
           >
             <Image
@@ -39,6 +40,7 @@ export function OrgSwitcher() {
               priority
             />
           </div>
+
 
           {/* Text container with transition */}
           <div
