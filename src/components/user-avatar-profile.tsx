@@ -15,7 +15,7 @@ interface UserAvatarProfileProps {
 export function UserAvatarProfile({ user, showInfo }: UserAvatarProfileProps) {
   return (
     <div
-      className='flex items-center gap-2 cursor-pointer rounded-lg hover:bg-muted'
+      className='flex items-center gap-2 cursor-pointer rounded-lg'
       role='button'
       aria-label='User profile'
     >

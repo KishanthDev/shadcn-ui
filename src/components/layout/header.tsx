@@ -4,7 +4,6 @@ import { Separator } from '../ui/separator';
 import { Breadcrumbs } from '../breadcrumbs';
 import { UserNav } from './user-nav';
 import { ModeToggle } from './ThemeToggle/theme-toggle';
-import { ThemeSelector } from '../theme-selector';
 
 export default function Header() {
   return (
@@ -18,7 +17,6 @@ export default function Header() {
       <div className='flex items-center gap-2 px-4'>
         <ModeToggle />
         <UserNav />
-        <ThemeSelector/>
       </div>
     </header>
   );
