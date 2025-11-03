@@ -74,7 +74,7 @@ export function UserNav() {
 
         {/* Account */}
         <DropdownMenuGroup>
-          <DropdownMenuItem onClick={() => router.push('/dashboard/profile')}>
+          <DropdownMenuItem onClick={() => router.push('/profile')}>
             Profile
           </DropdownMenuItem>
           <DropdownMenuItem>Refresh Token</DropdownMenuItem>

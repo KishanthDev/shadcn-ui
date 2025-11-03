@@ -20,7 +20,7 @@ export function Breadcrumbs() {
       <BreadcrumbList>
         {items.map((item, index) => {
           const isDashboard = item.title.toLowerCase() === 'dashboard';
-          const link = isDashboard ? '/dashboard/overview' : item.link;
+          const link = item.link;
 
           return (
             <Fragment key={item.title}>

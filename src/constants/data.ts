@@ -14,8 +14,15 @@ export type Product = {
 //Info: The following data is used for the sidebar navigation and Cmd K bar.
 export const navItems: NavItem[] = [
   {
+    title: 'Copilot Dashboard',
+    url: '/copilot-dashboard',
+    icon: 'logo',
+    isActive: false,
+    items: [] // Empty array as there are no child items for Dashboard
+  },
+  {
     title: 'Generate',
-    url: '/dashboard/overview',
+    url: '/overview',
     icon: 'dashboard',
     isActive: false,
     shortcut: ['d', 'd'],
@@ -23,7 +30,7 @@ export const navItems: NavItem[] = [
   },
   {
     title: 'Build',
-    url: '/dashboard/product',
+    url: '/product',
     icon: 'product',
     shortcut: ['p', 'p'],
     isActive: false,
@@ -31,18 +38,39 @@ export const navItems: NavItem[] = [
   },
   {
     title: 'Deploy',
-    url: '/dashboard/deploy', // Placeholder as there is no direct link for the parent
+    url: '/deploy', // Placeholder as there is no direct link for the parent
     icon: 'billing',
     isActive: true,
   },
   {
     title: 'Gen AI',
-    url: '/dashboard/gen-ai',
+    url: '/gen-ai',
     icon: 'kanban',
     shortcut: ['k', 'k'],
     isActive: false,
     items: [] // No child items
-  }
+  },
+  {
+    title: 'Secret Management',
+    url: '/secret-management', // Placeholder as there is no direct link for the parent
+    icon: 'billing',
+    isActive: true,
+
+    items: [
+      {
+        title: 'Secret Explorer',
+        url: '/secret-management/secret-explorer',
+        icon: 'userPen',
+        shortcut: ['m', 'm']
+      },
+      {
+        title: 'Change Requests',
+        shortcut: ['l', 'l'],
+        url: '/secret-management/change-requests',
+        icon: 'login'
+      }
+    ]
+  },
 ];
 
 export interface SaleUser {

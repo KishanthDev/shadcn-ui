@@ -5,9 +5,8 @@ import type { NextRequest } from 'next/server'
 export function middleware(request: NextRequest) {
   const url = request.nextUrl
 
-  // If user visits root "/", redirect to /dashboard/overview
   if (url.pathname === '/') {
-    url.pathname = '/dashboard/overview'
+    url.pathname = '/copilot-dashboard'
     return NextResponse.redirect(url)
   }
 
