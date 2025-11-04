@@ -18,7 +18,6 @@ import {
   SidebarContent,
   SidebarFooter,
   SidebarGroup,
-  SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
@@ -30,14 +29,11 @@ import {
 } from '@/components/ui/sidebar';
 import { UserAvatarProfile } from '@/components/user-avatar-profile';
 import { navItems } from '@/constants/data';
-import { useMediaQuery } from '@/hooks/use-media-query';
 import {
   IconBell,
   IconChevronRight,
   IconChevronsDown,
-  IconCreditCard,
   IconLogout,
-  IconPhotoUp,
   IconUserCircle
 } from '@tabler/icons-react';
 import Link from 'next/link';
@@ -45,9 +41,9 @@ import { usePathname, useRouter } from 'next/navigation';
 import * as React from 'react';
 import { Icons } from '../icons';
 import { OrgSwitcher } from '../org-switcher';
+
 export const company = {
   name: 'Acme Inc',
-  logo: IconPhotoUp,
   plan: 'Enterprise'
 };
 
@@ -58,20 +54,10 @@ export default function AppSidebar() {
     emailAddress: 'john@gmail.com',
   }
   const pathname = usePathname();
-  const { isOpen } = useMediaQuery();
   const router = useRouter();
 
-
-  React.useEffect(() => {
-    // Side effects based on sidebar state changes
-  }, [isOpen]);
-
   return (
-    <Sidebar collapsible='icon'>
-      <SidebarHeader className="h-14 justify-center items-center flex-shrink-0">
-        <OrgSwitcher
-        />
-      </SidebarHeader>
+    <Sidebar className=" absolute top-14 h-[calc(100vh-3.5rem)]" collapsible='icon'>
       <SidebarContent className='overflow-x-hidden'>
         <SidebarGroup>
           <SidebarMenu>
@@ -151,7 +137,7 @@ export default function AppSidebar() {
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
               <DropdownMenuContent
-                className='w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg'
+                className='w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg'
                 side='bottom'
                 align='end'
                 sideOffset={4}
@@ -168,7 +154,6 @@ export default function AppSidebar() {
                   </div>
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
-
                 <DropdownMenuGroup>
                   <DropdownMenuItem
                     onClick={() => router.push('/profile')}
@@ -182,8 +167,7 @@ export default function AppSidebar() {
                   </DropdownMenuItem>
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem
-                >
+                <DropdownMenuItem>
                   <IconLogout className="mr-2 h-4 w-4" />
                   Sign out
                 </DropdownMenuItem>
