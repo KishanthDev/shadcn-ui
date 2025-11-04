@@ -51,12 +51,6 @@ export const company = {
   plan: 'Enterprise'
 };
 
-const tenants = [
-  { id: '1', name: 'Acme Inc' },
-  { id: '2', name: 'Beta Corp' },
-  { id: '3', name: 'Gamma Ltd' }
-];
-
 export default function AppSidebar() {
   const user = {
     id: 'user_123',
@@ -66,11 +60,7 @@ export default function AppSidebar() {
   const pathname = usePathname();
   const { isOpen } = useMediaQuery();
   const router = useRouter();
-  const handleSwitchTenant = (_tenantId: string) => {
-    // Tenant switching functionality would be implemented here
-  };
 
-  const activeTenant = tenants[0];
 
   React.useEffect(() => {
     // Side effects based on sidebar state changes
