@@ -77,7 +77,7 @@ export default function AppSidebar() {
                         isActive={pathname === item.url}
                       >
                         {item.icon && <Icon />}
-                        <span>{item.title}</span>
+                        <span className="whitespace-nowrap">{item.title}</span>
                         <IconChevronRight className='ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90' />
                       </SidebarMenuButton>
                     </CollapsibleTrigger>
