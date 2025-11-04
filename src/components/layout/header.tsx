@@ -14,9 +14,7 @@ export default function Header() {
       
       {/* LEFT SECTION — Sidebar + Company + Breadcrumbs */}
       <div className="flex items-center gap-3">
-        {/* Sidebar Toggle */}
-        <SidebarTrigger className="-ml-1" />
-
+    
         {/* Company logo */}
         <div
           className="flex aspect-square size-8 items-center justify-center rounded-lg shrink-0"
@@ -42,10 +40,9 @@ export default function Header() {
         </div>
 
         {/* Separator between company and breadcrumbs */}
-        <Separator orientation="vertical" className="h-5 mx-2" />
+        <Separator orientation="vertical" className="h-5 mx-13" />
 
-        {/* Breadcrumbs */}
-        <Breadcrumbs />
+        <SidebarTrigger />
       </div>
 
       {/* RIGHT SECTION — Mode & User Menu */}

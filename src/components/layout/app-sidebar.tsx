@@ -57,7 +57,7 @@ export default function AppSidebar() {
   const router = useRouter();
 
   return (
-    <Sidebar className=" absolute top-14 h-[calc(100vh-3.5rem)]" collapsible='icon'>
+    <Sidebar className="absolute top-14 h-[calc(100vh-3.5rem)]" collapsible='icon'>
       <SidebarContent className='overflow-x-hidden'>
         <SidebarGroup>
           <SidebarMenu>
