@@ -121,7 +121,21 @@ export default function AppSidebar() {
         <SidebarMenu>
           <SidebarMenuItem>
             <DropdownMenu>
-              <DropdownMenuTrigger className="cursor-pointer !bg-transparent hover:!bg-transparent focus:!bg-transparent active:!bg-transparent" asChild>
+              <DropdownMenuTrigger
+                className="
+    cursor-pointer 
+    !bg-transparent 
+    hover:bg-transparent 
+    active:bg-transparent 
+    focus:bg-transparent 
+    text-foreground 
+    hover:text-foreground 
+    dark:text-foreground 
+    dark:hover:text-foreground 
+    transition-none
+  "
+                asChild
+              >
                 <SidebarMenuButton
                   size='lg'
                   className='!h-auto !p-0 data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground'
