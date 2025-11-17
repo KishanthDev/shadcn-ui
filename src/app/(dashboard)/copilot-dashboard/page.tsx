@@ -1,17 +1,18 @@
 'use client';
-
 import { useGateValue } from "@statsig/react-bindings";
 
 export default function FeatureTest() {
-  const gate = useGateValue("new_feature_test");
+  const ENV = process.env.NEXT_PUBLIC_APP_ENV || process.env.NODE_ENV;
+  const isProd = ENV === "production";
+
+  // Only query gate in production; enable elsewhere
+  const gate = isProd ? useGateValue("new_feature_test") : true;
 
   return (
     <div className="p-6 max-w-2xl mx-auto">
       <h1 className="text-2xl font-bold mb-4">Feature Gate Test</h1>
-
       <div className="border rounded-lg p-4 mb-4">
         <h2 className="text-xl font-semibold mb-2">Feature Status</h2>
-
         <div className="flex items-center gap-2">
           <span>new_feature_test:</span>
           <span
