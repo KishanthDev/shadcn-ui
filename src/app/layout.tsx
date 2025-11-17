@@ -7,6 +7,8 @@ import type { Metadata, Viewport } from 'next';
 import { cookies } from 'next/headers';
 import NextTopLoader from 'nextjs-toploader';
 import { NuqsAdapter } from 'nuqs/adapters/next/app';
+import { StatsigBootstrapProvider } from "@statsig/next";
+
 import './globals.css';
 import './theme.css';
 
@@ -29,10 +31,16 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+
   // 🟩 Get active theme from cookies dynamically
   const cookieStore = await cookies();
   const activeThemeValue = cookieStore.get('active_theme')?.value || 'blue';
   const isScaled = activeThemeValue.endsWith('-scaled');
+
+  // 🟦 Statsig user object
+  const user = {
+    userID: "user-123", // customize later
+  };
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -57,6 +65,7 @@ export default async function RootLayout({
           }}
         />
       </head>
+
       <body
         className={cn(
           'bg-background overflow-hidden overscroll-none font-sans antialiased',
@@ -65,21 +74,29 @@ export default async function RootLayout({
           fontVariables
         )}
       >
-        <NextTopLoader color="var(--primary)" showSpinner={false} />
-        <NuqsAdapter>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme={activeThemeValue}
-            enableSystem
-            disableTransitionOnChange
-            enableColorScheme
-          >
-            <Providers activeThemeValue={activeThemeValue}>
-              <Toaster />
-              {children}
-            </Providers>
-          </ThemeProvider>
-        </NuqsAdapter>
+        {/* 🟪 Wrap everything inside Statsig */}
+        <StatsigBootstrapProvider
+          user={user}
+          clientKey={process.env.NEXT_PUBLIC_STATSIG_CLIENT_KEY || ''}
+          serverKey={process.env.STATSIG_SERVER_KEY || ''}
+        >
+          <NextTopLoader color="var(--primary)" showSpinner={false} />
+
+          <NuqsAdapter>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme={activeThemeValue}
+              enableSystem
+              disableTransitionOnChange
+              enableColorScheme
+            >
+              <Providers activeThemeValue={activeThemeValue}>
+                <Toaster />
+                {children}
+              </Providers>
+            </ThemeProvider>
+          </NuqsAdapter>
+        </StatsigBootstrapProvider>
       </body>
     </html>
   );
