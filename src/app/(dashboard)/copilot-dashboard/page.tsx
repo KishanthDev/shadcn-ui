@@ -5,8 +5,11 @@ export default function FeatureTest() {
   const ENV = process.env.NEXT_PUBLIC_APP_ENV || process.env.NODE_ENV;
   const isProd = ENV === "production";
 
-  // Only query gate in production; enable elsewhere
-  const gate = isProd ? useGateValue("new_feature_test") : true;
+  // Always call the hook
+  const gateValue = useGateValue("new_feature_test");
+
+  // But override the value in development
+  const gate = isProd ? gateValue : true;
 
   return (
     <div className="p-6 max-w-2xl mx-auto">
