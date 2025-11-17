@@ -2,14 +2,12 @@
 import { useGateValue } from "@statsig/react-bindings";
 
 export default function FeatureTest() {
-  const ENV = process.env.NEXT_PUBLIC_APP_ENV || process.env.NODE_ENV;
-  const isProd = ENV === "production";
 
   // Always call the hook
-  const gateValue = useGateValue("new_feature_test");
+  const gateValue = useGateValue("test");
+  console.log(`Feature Gate Value: ${gateValue}`);
 
-  // But override the value in development
-  const gate = isProd ? gateValue : true;
+  const gate = gateValue ;
 
   return (
     <div className="p-6 max-w-2xl mx-auto">
