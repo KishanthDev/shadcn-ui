@@ -1,4 +1,3 @@
-// app/layout.tsx
 import "./globals.css";
 import "./theme.css";
 
@@ -12,26 +11,7 @@ import { cookies, headers } from "next/headers";
 import NextTopLoader from "nextjs-toploader";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { StatsigBootstrapProvider } from "@statsig/next";
-
-// Fetch device info from our API route
-async function fetchDeviceInfo() {
-  try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || `http://localhost:3000`;
-    const res = await fetch(`${baseUrl}/api/device-info`, {
-      method: "GET",
-      cache: "no-store",
-      headers: {
-        "User-Agent": (await headers()).get("user-agent") || "", // Forward UA
-      },
-    });
-
-    if (!res.ok) return null;
-    return await res.json();
-  } catch (err) {
-    console.error("Failed to fetch device info:", err);
-    return null;
-  }
-}
+import { UAParser } from "ua-parser-js";
 
 export const metadata: Metadata = {
   title: "Next Shadcn",
@@ -51,30 +31,47 @@ export default async function RootLayout({
   const activeThemeValue = cookieStore.get("active_theme")?.value || "blue";
   const isScaled = activeThemeValue.endsWith("-scaled");
 
-  // Get real device info from our API route
-  const deviceInfo = await fetchDeviceInfo();
+  // ✅ CORRECT: Parse User-Agent directly in layout
+  const headersList = await headers();
+  const userAgent = headersList.get("user-agent") || "";
+  
+  const parser = new UAParser(userAgent);
+  const result = parser.getResult();
+
+  const deviceInfo = {
+    os: result.os.name ?? "Unknown",
+    osVersion: result.os.version ?? "Unknown",
+    browser: result.browser.name ?? "Unknown",
+    browserVersion: result.browser.version ?? "Unknown",
+    device: result.device.model ?? result.device.vendor ?? "Desktop",
+    deviceType: result.device.type ?? "desktop",
+    isMobile: result.device.type === "mobile",
+    isTablet: result.device.type === "tablet",
+    isDesktop: !result.device.type || ["desktop", "console"].includes(result.device.type || ""),
+  };
 
   const statsigUser = {
     userID: "user_12345",
     email: "demo@example.com",
 
     // Standard Statsig fields
-    os_name: deviceInfo?.os || "Unknown",
-    os_version: deviceInfo?.osVersion || "Unknown",
-    browser_name: deviceInfo?.browser || "Unknown",
-    browser_version: deviceInfo?.browserVersion || "Unknown",
+    os_name: deviceInfo.os,
+    os_version: deviceInfo.osVersion,
+    browser_name: deviceInfo.browser,
+    browser_version: deviceInfo.browserVersion,
 
-    // Custom fields (very useful for targeting!)
+    // Custom fields
     custom: {
-      deviceModel: deviceInfo?.device || "Unknown",
-      deviceType: deviceInfo?.deviceType || "desktop",
-      isMobile: deviceInfo?.isMobile || false,
-      isTablet: deviceInfo?.isTablet || false,
-      isDesktop: deviceInfo?.isDesktop || true,
+      deviceModel: deviceInfo.device,
+      deviceType: deviceInfo.deviceType,
+      isMobile: deviceInfo.isMobile,
+      isTablet: deviceInfo.isTablet,
+      isDesktop: deviceInfo.isDesktop,
+      userAgent: userAgent.slice(0, 200), // For debugging
     },
   };
 
-  console.log("Statsig User with Device Info:", statsigUser);
+  console.log("✅ Statsig User (Direct Parsing):", JSON.stringify(statsigUser, null, 2));
 
   return (
     <html lang="en" suppressHydrationWarning>
