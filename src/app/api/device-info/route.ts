@@ -6,13 +6,18 @@ import { UAParser } from 'ua-parser-js'; // Named import!
 export const dynamic = 'force-dynamic';
 
 export async function GET(request: NextRequest) {
-  try {
-    const headersList = headers();
-    const userAgent = (await headersList).get('user-agent') || '';
+    try {
+  const userAgent = request.headers.get('user-agent') || ''
 
-    // Correct usage: UAParser is a class/constructor
-    const parser = new UAParser(userAgent); // Use `new`
-    const result = parser.getResult();
+  // Optional fallback: try to reconstruct from client hints
+  if (!userAgent || userAgent.length < 10) {
+    const secChUa = request.headers.get('sec-ch-ua')
+    console.log('UA missing, got sec-ch-ua:', secChUa)
+    // You can even use a library like `ua-client-hints` if needed
+  }
+
+  const parser = new UAParser(userAgent)
+  const result = parser.getResult()
 
     // Or one-liner: const result = new UAParser(userAgent).getResult();
 
