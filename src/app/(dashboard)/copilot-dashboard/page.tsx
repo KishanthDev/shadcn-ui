@@ -1,31 +1,45 @@
 'use client';
-import { useGateValue } from "@statsig/react-bindings";
+
+import { useGateValue, useDynamicConfig } from "@statsig/react-bindings";
+
+interface ConfigSection {
+  title?: string;
+  message?: string;
+  color?: string;
+}
 
 export default function FeatureTest() {
-  // First gate
   const gateTest = useGateValue("test");
 
-  console.log("Gate: test =", gateTest);
+  const config = useDynamicConfig("new-changes");
+
+  // Load config sections
+  const enabled = config.get("enabledState", {}) as ConfigSection;
+  const disabled = config.get("disabledState", {}) as ConfigSection;
+
+  // Select the correct section based on gate
+  const activeConfig = gateTest ? enabled : disabled;
+
+  const title = activeConfig.title || "Default Title";
+  const message = activeConfig.message || "Default Message";
+  const color = activeConfig.color || "gray";
 
   return (
     <div className="p-6 max-w-2xl mx-auto">
       <h1 className="text-2xl font-bold mb-4">
-        {gateTest
-          ? "Feature Gate Test"
-          : "Feature disabled — view on mobile to enable"}
+        Feature Gate + Dynamic Config
       </h1>
 
-      {/* FIRST GATE CARD */}
+      {/* FEATURE GATE STATUS */}
       <div className="border rounded-lg p-4 mb-4">
-        <h2 className="text-xl font-semibold mb-2">Feature Status</h2>
+        <h2 className="text-xl font-semibold mb-2">Feature Gate</h2>
 
         <div className="flex items-center gap-2 mb-3">
           <span>test:</span>
           <span
             className={`px-3 py-1 rounded ${
-              gateTest
-                ? "bg-green-100 text-green-800"
-                : "bg-red-100 text-red-800"
+              gateTest ? "bg-green-100 text-green-800"
+                        : "bg-red-100 text-red-800"
             }`}
           >
             {gateTest ? "✓ Enabled" : "✗ Disabled"}
@@ -33,25 +47,17 @@ export default function FeatureTest() {
         </div>
       </div>
 
-      {/* CONTENT FOR FIRST GATE */}
-      {gateTest ? (
-        <div className="bg-blue-50 border-l-4 border-blue-500 p-4 mb-4">
-          <h3 className="font-semibold text-blue-900 mb-2">🎉 test Active!</h3>
-          <p className="text-blue-800">
-            This content is visible when the <b>test</b> gate is enabled.
-          </p>
+      {/* UI FROM CONFIG */}
+      <div className={`border-l-4 p-4 mb-4 bg-${color}-50 border-${color}-500`}>
+        <h3 className="font-semibold mb-2">{title}</h3>
+        <p>{message}</p>
+
+        <div className="mt-3">
+          <span className={`px-3 py-1 rounded bg-${color}-100 text-${color}-800`}>
+            color = {color}
+          </span>
         </div>
-      ) : (
-        <div className="bg-gray-50 border-l-4 border-gray-500 p-4 mb-4">
-          <h3 className="font-semibold text-gray-900 mb-2">test Disabled</h3>
-          <p className="text-gray-800">
-            This content shows when the <b>test</b> feature is disabled.<br />
-            <span className="font-semibold text-red-700">
-              View on mobile to enable this feature.
-            </span>
-          </p>
-        </div>
-      )}
+      </div>
     </div>
   );
 }
