@@ -34,7 +34,7 @@ export default async function RootLayout({
   // ✅ CORRECT: Parse User-Agent directly in layout
   const headersList = await headers();
   const userAgent = headersList.get("user-agent") || "";
-  
+
   const parser = new UAParser(userAgent);
   const result = parser.getResult();
 
@@ -66,6 +66,7 @@ export default async function RootLayout({
       deviceType: deviceInfo.deviceType,
       isMobile: deviceInfo.isMobile,
       isTablet: deviceInfo.isTablet,
+      browser_name: deviceInfo.browser,
       isDesktop: deviceInfo.isDesktop,
       userAgent: userAgent.slice(0, 200), // For debugging
     },
