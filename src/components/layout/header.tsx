@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { SidebarTrigger } from '../ui/sidebar';
+import { SidebarTrigger, useSidebar } from '../ui/sidebar';
 import { Separator } from '../ui/separator';
 import { Breadcrumbs } from '../breadcrumbs';
 import { UserNav } from './user-nav';
@@ -9,13 +9,15 @@ import { ModeToggle } from './ThemeToggle/theme-toggle';
 import Image from 'next/image';
 
 export default function Header() {
+  const { open } = useSidebar();
+
   return (
-    <header className="flex h-14 w-full shrink-0 border-b shadow-sm items-center justify-between px-4 bg-background">
-      
-      {/* LEFT SECTION — Sidebar + Company + Breadcrumbs */}
+    <header className="flex h-14 w-full shrink-0 border-b shadow-sm items-center justify-between px-3 bg-background">
+
+      {/* LEFT */}
       <div className="flex items-center gap-3">
-    
-        {/* Company logo */}
+
+        {/* Logo */}
         <div
           className="flex aspect-square size-8 items-center justify-center rounded-lg shrink-0"
           style={{
@@ -33,19 +35,33 @@ export default function Header() {
           />
         </div>
 
-        {/* Company name + plan */}
-        <div className="flex flex-col leading-none">
+        {/* Company Name (smooth shrink) */}
+        <div
+          className={`
+            flex flex-col leading-none
+            transition-all duration-500 ease-in-out
+            ${open 
+              ? "opacity-100 w-auto ml-0"
+              : "opacity-0 w-0 overflow-hidden"
+            }
+          `}
+        >
           <span className="font-semibold text-sm">Acme Inc</span>
           <span className="text-xs text-muted-foreground">Enterprise</span>
         </div>
 
-        {/* Separator between company and breadcrumbs */}
-        <Separator orientation="vertical" className="h-5 mx-13" />
+        {/* Separator */}
+        <Separator
+          orientation="vertical"
+          className={`
+            ${open ? "h-5 mx-13" : "h-5 mx-21"}
+          `}
+        />
 
         <SidebarTrigger />
       </div>
 
-      {/* RIGHT SECTION — Mode & User Menu */}
+      {/* RIGHT */}
       <div className="flex items-center gap-3">
         <ModeToggle />
         <UserNav />
