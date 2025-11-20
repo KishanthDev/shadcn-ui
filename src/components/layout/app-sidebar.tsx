@@ -28,6 +28,7 @@ import {
   SidebarRail
 } from '@/components/ui/sidebar';
 import { UserAvatarProfile } from '@/components/user-avatar-profile';
+import { useStatsigFeatures } from "@/hooks/use-StatsigFeatures";
 import { navItems } from '@/constants/data';
 import {
   IconBell,
@@ -40,7 +41,6 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import * as React from 'react';
 import { Icons } from '../icons';
-import { OrgSwitcher } from '../org-switcher';
 
 export const company = {
   name: 'Acme Inc',
@@ -55,13 +55,23 @@ export default function AppSidebar() {
   }
   const pathname = usePathname();
   const router = useRouter();
+  const { load_beta_tabs } = useStatsigFeatures();
+
+  // Filter nav items based on Statsig gate
+  const filteredNavItems = navItems.filter((item) => {
+    if (!load_beta_tabs) {
+      if (item.title === "Deploy") return false;
+      if (item.title === "Gen AI") return false;
+    }
+    return true;
+  });
 
   return (
     <Sidebar className="absolute top-14 h-[calc(100vh-3.5rem)]" collapsible='icon'>
       <SidebarContent className='overflow-x-hidden'>
         <SidebarGroup>
           <SidebarMenu>
-            {navItems.map((item) => {
+            {filteredNavItems.map((item) => {
               const Icon = item.icon ? Icons[item.icon] : Icons.logo;
               return item?.items && item?.items?.length > 0 ? (
                 <Collapsible
