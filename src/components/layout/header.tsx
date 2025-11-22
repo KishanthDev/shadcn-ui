@@ -15,7 +15,7 @@ export default function Header() {
     <header className="flex h-14 w-full shrink-0 border-b shadow-sm items-center justify-between px-3 bg-background">
 
       {/* LEFT */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center">
 
         {/* Logo */}
         <div
@@ -41,7 +41,7 @@ export default function Header() {
             flex flex-col leading-none
             transition-all duration-500 ease-in-out
             ${open 
-              ? "opacity-100 w-auto ml-0"
+              ? "opacity-100 w-auto ml-0 pl-3"
               : "opacity-0 w-0 overflow-hidden"
             }
           `}
@@ -49,6 +49,8 @@ export default function Header() {
           <span className="font-semibold text-sm">Acme Inc</span>
           <span className="text-xs text-muted-foreground">Enterprise</span>
         </div>
+
+        <Separator orientation="vertical" className="mx-1 h-6" />
 
         <SidebarTrigger />
       </div>

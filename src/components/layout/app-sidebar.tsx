@@ -91,7 +91,7 @@ export default function AppSidebar() {
                         <IconChevronRight className='ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90' />
                       </SidebarMenuButton>
                     </CollapsibleTrigger>
-                    <CollapsibleContent>
+                    <CollapsibleContent className="pt-0.5">
                       <SidebarMenuSub>
                         {item.items?.map((subItem) => (
                           <SidebarMenuSubItem key={subItem.title}>
@@ -109,6 +109,7 @@ export default function AppSidebar() {
                     </CollapsibleContent>
                   </SidebarMenuItem>
                 </Collapsible>
+
               ) : (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton
