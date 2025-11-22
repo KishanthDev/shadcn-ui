@@ -50,14 +50,6 @@ export default function Header() {
           <span className="text-xs text-muted-foreground">Enterprise</span>
         </div>
 
-        {/* Separator */}
-        <Separator
-          orientation="vertical"
-          className={`
-            ${open ? "h-5 mx-13" : "h-5 mx-21"}
-          `}
-        />
-
         <SidebarTrigger />
       </div>
 

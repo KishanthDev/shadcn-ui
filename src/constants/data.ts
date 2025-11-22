@@ -14,36 +14,46 @@ export type Product = {
 //Info: The following data is used for the sidebar navigation and Cmd K bar.
 export const navItems: NavItem[] = [
   {
-    title: 'Copilot Dashboard',
-    url: '/copilot-dashboard',
-    icon: 'logo',
-    isActive: false,
-    items: [] // Empty array as there are no child items for Dashboard
-  },
-  {
-    title: 'Generate',
+    title: 'Dashboard',
     url: '/overview',
     icon: 'dashboard',
     isActive: false,
-    shortcut: ['d', 'd'],
-    items: [] // Empty array as there are no child items for Dashboard
   },
   {
-    title: 'Build',
-    url: '/product',
+    title: 'Copilot Dashboard',
+    url: '/copilot-dashboard',
     icon: 'product',
-    shortcut: ['p', 'p'],
     isActive: false,
     items: [] // No child items
   },
   {
-    title: 'Deploy',
-    url: '/deploy', // Placeholder as there is no direct link for the parent
-    icon: 'billing',
-    isActive: true,
+    title: 'Microservices',
+    url: '/copilot',
+    icon: 'logo',
+    isActive: false,
+    items: [
+      {
+        title: 'Generate',
+        url: '/generate',
+        icon: 'dashboard',
+        shortcut: ['d', 'd']
+      },
+      {
+        title: 'Build',
+        url: '/build',
+        icon: 'product',
+        shortcut: ['p', 'p']
+      },
+      {
+        title: 'Deploy',
+        url: '/deploy',
+        icon: 'billing',
+        shortcut: ['b', 'b']
+      }
+    ]
   },
   {
-    title: 'Gen AI',
+    title: 'Gen AI Dashboard',
     url: '/gen-ai',
     icon: 'kanban',
     shortcut: ['k', 'k'],
@@ -71,6 +81,29 @@ export const navItems: NavItem[] = [
       }
     ]
   },
+  {
+    title: 'Microfrontends', url: '/microfrontends', icon: 'settings', isActive: false,
+    items: [
+      {
+        title: 'Generate',
+        url: '/generate',
+        icon: 'dashboard',
+        shortcut: ['d', 'd']
+      },
+      {
+        title: 'Build',
+        url: '/build',
+        icon: 'product',
+        shortcut: ['p', 'p']
+      },
+      {
+        title: 'Deploy',
+        url: '/deploy',
+        icon: 'billing',
+        shortcut: ['b', 'b']
+      }
+    ] // No child items
+  }
 ];
 
 export interface SaleUser {

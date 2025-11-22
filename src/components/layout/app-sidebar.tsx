@@ -87,7 +87,7 @@ export default function AppSidebar() {
                         isActive={pathname === item.url}
                       >
                         {item.icon && <Icon />}
-                        <span className="whitespace-nowrap">{item.title}</span>
+                        <span className="whitespace-nowrap font-medium">{item.title}</span>
                         <IconChevronRight className='ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90' />
                       </SidebarMenuButton>
                     </CollapsibleTrigger>
@@ -100,7 +100,7 @@ export default function AppSidebar() {
                               isActive={pathname === subItem.url}
                             >
                               <Link href={subItem.url}>
-                                <span>{subItem.title}</span>
+                                <span className='font-medium'>{subItem.title}</span>
                               </Link>
                             </SidebarMenuSubButton>
                           </SidebarMenuSubItem>
@@ -118,7 +118,7 @@ export default function AppSidebar() {
                   >
                     <Link href={item.url}>
                       <Icon />
-                      <span>{item.title}</span>
+                      <span className='font-medium'>{item.title}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
