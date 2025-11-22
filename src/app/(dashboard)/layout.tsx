@@ -26,7 +26,7 @@ export default async function DashboardLayout({
           
           <div className="flex flex-1">
             <AppSidebar/>
-            <main className="flex-1 overflow-auto">
+            <main className="flex-1 bg-background overflow-auto">
               {children}
             </main>
           </div>
