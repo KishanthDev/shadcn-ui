@@ -1,5 +1,0 @@
-# app/robots.txt
-User-agent: *
-Allow: /
-
-Sitemap: https://shadcn-ui-git-header-fix-kishanths-projects-3911b82e.vercel.app/sitemap.xml
