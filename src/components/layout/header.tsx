@@ -19,7 +19,7 @@ export default function Header() {
 
         {/* Logo */}
         <div
-          className="flex aspect-square size-8 items-center justify-center rounded-lg shrink-0"
+          className="flex aspect-square size-8 items-center justify-center rounded shrink-0"
           style={{
             backgroundColor: 'var(--primary)',
             color: 'var(--primary-foreground)',
