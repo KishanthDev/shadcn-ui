@@ -36,10 +36,13 @@ import {
 export type Icon = React.ComponentType<IconProps>;
 
 function withViewBox(IconComponent: Icon) {
-  return (props: IconProps) => (
+  const Wrapped = (props: IconProps) => (
     <IconComponent viewBox="2 0 26 26" {...props} />
   );
+  Wrapped.displayName = IconComponent.displayName || IconComponent.name;
+  return Wrapped;
 }
+
 
 
 export const Icons = {
