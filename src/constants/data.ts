@@ -21,7 +21,7 @@ export const navItems: NavItem[] = [
   },
   {
     title: 'Gen AI UserMetrics',
-    url: '/genai-usermetrics',
+    url: '/genai-usermetrics/github-copilot',
     icon: 'product',
     isActive: false,
     items: [
@@ -41,25 +41,25 @@ export const navItems: NavItem[] = [
   },
   {
     title: 'Microservices',
-    url: '/copilot',
+    url: '/microservices/generate',
     icon: 'logo',
     isActive: false,
     items: [
       {
         title: 'Generate',
-        url: '/generate',
+        url: '/microservices/generate',
         icon: 'dashboard',
         shortcut: ['d', 'd']
       },
       {
         title: 'Build',
-        url: '/build',
+        url: '/microservices/build',
         icon: 'product',
         shortcut: ['p', 'p']
       },
       {
         title: 'Deploy',
-        url: '/deploy',
+        url: '/microservices/deploy',
         icon: 'billing',
         shortcut: ['b', 'b']
       }
@@ -75,7 +75,7 @@ export const navItems: NavItem[] = [
   },
   {
     title: 'Secret Management',
-    url: '/secret-management', // Placeholder as there is no direct link for the parent
+    url: '/secret-management/secret-explorer', // Placeholder as there is no direct link for the parent
     icon: 'billing',
     isActive: true,
 
@@ -95,23 +95,23 @@ export const navItems: NavItem[] = [
     ]
   },
   {
-    title: 'Microfrontends', url: '/microfrontends', icon: 'settings', isActive: false,
+    title: 'Microfrontends', url: '/microfrontends/generate', icon: 'settings', isActive: false,
     items: [
       {
         title: 'Generate',
-        url: '/generate',
+        url: '/microfrontends/generate',
         icon: 'dashboard',
         shortcut: ['d', 'd']
       },
       {
         title: 'Build',
-        url: '/build',
+        url: '/microfrontends/build',
         icon: 'product',
         shortcut: ['p', 'p']
       },
       {
         title: 'Deploy',
-        url: '/deploy',
+        url: '/microfrontends/deploy',
         icon: 'billing',
         shortcut: ['b', 'b']
       }
