@@ -6,7 +6,7 @@ export function middleware(request: NextRequest) {
   const url = request.nextUrl
 
   if (url.pathname === '/') {
-    url.pathname = '/copilot-dashboard'
+    url.pathname = '/overview'
     return NextResponse.redirect(url)
   }
 

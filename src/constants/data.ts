@@ -20,11 +20,24 @@ export const navItems: NavItem[] = [
     isActive: false,
   },
   {
-    title: 'Copilot Dashboard',
-    url: '/copilot-dashboard',
+    title: 'Gen AI UserMetrics',
+    url: '/genai-usermetrics',
     icon: 'product',
     isActive: false,
-    items: [] // No child items
+    items: [
+      {
+        title: 'GitHub Copilot',
+        url: '/genai-usermetrics/github-copilot',
+        icon: 'userPen',
+        shortcut: ['u', 'm']
+      },
+      {
+        title: 'Cursor Analytics',
+        url: '/genai-usermetrics/cursor-analytics',
+        icon: 'login',
+        shortcut: ['u', 'a']
+      }
+    ] // No child items
   },
   {
     title: 'Microservices',

@@ -2,8 +2,6 @@
 
 import React from 'react';
 import { SidebarTrigger, useSidebar } from '../ui/sidebar';
-import { Separator } from '../ui/separator';
-import { Breadcrumbs } from '../breadcrumbs';
 import { UserNav } from './user-nav';
 import { ModeToggle } from './ThemeToggle/theme-toggle';
 import Image from 'next/image';
@@ -12,11 +10,15 @@ export default function Header() {
   const { open } = useSidebar();
 
   return (
-    <header className="flex h-14 w-full shrink-0 border-b shadow-sm items-center justify-between px-3 bg-background">
+    <header className="flex h-14 w-full shrink-0 border-b shadow-sm items-center justify-between px-2 bg-background">
 
       {/* LEFT */}
-      <div className="flex items-center">
-
+      <div
+        className={`
+    flex items-center transition-all duration-500 ease-in-out
+    ${open ? "w-[13.5rem]" : "w-auto"}
+  `}
+      >
         {/* Logo */}
         <div
           className="flex aspect-square size-8 items-center justify-center rounded shrink-0"
@@ -35,23 +37,20 @@ export default function Header() {
           />
         </div>
 
-        {/* Company Name (smooth shrink) */}
+        {/* Company Name */}
         <div
           className={`
-            flex flex-col leading-none
-            transition-all duration-500 ease-in-out
-            ${open 
-              ? "opacity-100 w-auto ml-0 pl-3"
-              : "opacity-0 w-0 overflow-hidden"
-            }
-          `}
+      flex flex-col leading-none ml-3
+      transition-all duration-500 ease-in-out
+      ${open ? "opacity-100 w-auto" : "opacity-0 w-0 overflow-hidden ml-0"}
+    `}
         >
-          <span className="font-semibold text-sm">Acme Inc</span>
+          <span className="font-semibold text-sm">TELA DOC</span>
           <span className="text-xs text-muted-foreground">Enterprise</span>
         </div>
-
-        <Separator orientation="vertical" className="mx-1 h-6" />
-
+      </div>
+      <div className="flex-1 flex items-center">
+        {/* Sidebar Trigger */}
         <SidebarTrigger />
       </div>
 

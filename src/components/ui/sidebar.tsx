@@ -26,8 +26,8 @@ import {
 
 const SIDEBAR_COOKIE_NAME = 'sidebar_state';
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
-const SIDEBAR_WIDTH = '16rem';
-const SIDEBAR_WIDTH_MOBILE = '18rem';
+const SIDEBAR_WIDTH = '14rem';
+const SIDEBAR_WIDTH_MOBILE = '14rem';
 const SIDEBAR_WIDTH_ICON = '3rem';
 const SIDEBAR_KEYBOARD_SHORTCUT = 'b';
 
@@ -273,9 +273,9 @@ function SidebarTrigger({
       {...props}
     >
       {open ? (
-        <ChevronsLeft className="size-4 transition-transform duration-500" />
+        <ChevronsLeft className="size-6 transition-transform duration-500" />
       ) : (
-        <ChevronsRight className="size-4 transition-transform duration-500" />
+        <ChevronsRight className="size-6 transition-transform duration-500" />
       )}
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
