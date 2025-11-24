@@ -10,14 +10,20 @@ export default function Header() {
   const { open } = useSidebar();
 
   return (
-    <header className="flex h-14 w-full shrink-0 border-b shadow-sm items-center justify-between px-2 bg-background">
+    <header
+      className="
+        flex h-14 w-full shrink-0 border-b shadow-sm items-center justify-between 
+        px-2 bg-background
+      "
+    >
 
-      {/* LEFT */}
+      {/* LEFT SIDE — LOGO + TEXT */}
       <div
         className={`
-    flex items-center transition-all duration-500 ease-in-out
-    ${open ? "w-[13.5rem]" : "w-auto"}
-  `}
+          flex items-center 
+          transition-all duration-500 ease-in-out
+          ${open ? "w-[13.5rem]" : "w-[3rem]"}
+        `}
       >
         {/* Logo */}
         <div
@@ -37,24 +43,32 @@ export default function Header() {
           />
         </div>
 
-        {/* Company Name */}
+        {/* Company name */}
         <div
           className={`
-      flex flex-col leading-none ml-3
-      transition-all duration-500 ease-in-out
-      ${open ? "opacity-100 w-auto" : "opacity-0 w-0 overflow-hidden ml-0"}
-    `}
+    flex flex-col leading-none
+    transition-all duration-500 ease-in-out
+    overflow-hidden
+    ${open ? "opacity-100 max-w-[200px] ml-3" : "opacity-0 max-w-0 ml-0"}
+  `}
         >
-          <span className="font-semibold text-sm">TELA DOC</span>
-          <span className="text-xs text-muted-foreground">Enterprise</span>
+          <span className="font-semibold text-sm whitespace-nowrap">TELA DOC</span>
+          <span className="text-xs text-muted-foreground whitespace-nowrap">Enterprise</span>
         </div>
+
       </div>
-      <div className="flex-1 flex items-center">
-        {/* Sidebar Trigger */}
+
+      {/* CENTER — SIDEBAR TRIGGER */}
+      <div
+        className={`
+          flex-1 flex items-center 
+          transition-all duration-500 ease-in-out
+        `}
+      >
         <SidebarTrigger />
       </div>
 
-      {/* RIGHT */}
+      {/* RIGHT SIDE */}
       <div className="flex items-center gap-3">
         <ModeToggle />
         <UserNav />
