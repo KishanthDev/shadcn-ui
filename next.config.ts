@@ -12,7 +12,8 @@ const baseConfig: NextConfig = {
       }
     ]
   },
-  transpilePackages: ['geist']
+  transpilePackages: ['geist'],
+  serverExternalPackages:['@statsig/statsig-node-core'],
 };
 
 let configWithPlugins = baseConfig;
